@@ -8,8 +8,9 @@ import Signup from './components/Signup.jsx';
 import Login from './components/Login.jsx';
 import Navigation from './components/Navigation.jsx'
 import SpotifyPlayer from './components/Playlist.jsx';
-import { Message, Grid } from 'semantic-ui-react'
-import YelpMap from './components/Map.jsx'
+import { Message, Grid } from 'semantic-ui-react';
+import YelpMap from './components/Map.jsx';
+import ConcertsContainer from './components/ConcertsContainer.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -48,7 +49,6 @@ class App extends React.Component {
     this.changeBackgroundColor();
 		axios.post('/drinks', {alcohols: this.state.alcohols})
 		.then((response) => {
-      console.log("This is response data", response.data);
 			this.setState({
 				drinks: response.data
 			})
@@ -112,7 +112,9 @@ class App extends React.Component {
       }
     })
     .then((res) => {
-      console.log('res in client from concerts ', res.data)
+      this.setState({
+        concerts: res.data
+      })
     })
     .catch((err) => {
       console.log('err in client in getting concerts ', err);
@@ -285,9 +287,7 @@ class App extends React.Component {
                 </div>
               </Grid.Row>
               <Grid.Row>
-                <Message.Item>
-                      yo
-                </Message.Item> 
+                <ConcertsContainer concerts={this.state.concerts} />
               </Grid.Row>
             </Grid.Column>
             <Grid.Column width={5}>
