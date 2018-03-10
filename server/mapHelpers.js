@@ -4,7 +4,7 @@ const axios = require('axios');
 const paramsObj = {
   party: 'danceclubs',
   chill: 'spas',
-  classical: 'cocktail_bars',
+  classical: 'cocktailbars',
   country: 'divebars',
   latin: 'latin'
 };
